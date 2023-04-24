@@ -1,17 +1,24 @@
 package ShopModule;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 
 @Entity
 public class Shop 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@SequenceGenerator(name="shopmodule",
+			  sequenceName="shopmodule_sequence",
+			  allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private int shopId;
 	//private Employee shopEmployementID;
+	@Column(name="shop_category",
+			nullable=false)
 	private String shopCategory;
 	private String shopName;
 	private String shopStatus;
